@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Product.destroy_all
+
+Product.create!([{ name: "Macbook Air",  description: "Most awesome laptop ever!!", price: "10000"  },
+					{ name: "Asus ZenBook",  description: "Great for work & study", price: "5000"  } ])
+
+p "Created #{Product.count} products"
