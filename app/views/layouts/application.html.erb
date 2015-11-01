@@ -14,7 +14,51 @@
 
   <body>
 
-    <%= yield %>
+  <div class="row">
+  <nav class="top-bar column" data-topbar>
 
-  </body>
+      <ul class="title-area">
+        <li class="name">
+          <h1>
+            <a href="/">
+              <i class="fi-play-video"></i> MovieStore
+            </a>
+          </h1>
+        </li>
+        <li class="toggle-topbar"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <ul class="right">
+          <li><%=link_to "Register", "#" %></li>
+          <li><%=link_to "Login", "#" %></li>
+        </ul>
+      </section>
+
+    </nav>
+</div>
+
+  <%if notice.present? || alert.present? %>
+  <div class="row">
+    <%is_alert = alert.present? ? "alert" : ""%>
+      <div data-alert class="alert-box <%=is_alert%>">
+        <%=notice || alert%>
+        <a href="#" class="close">&times;</a>
+      </div>
+  </div>
+<%end%>
+
+  <div id="main-content" class="row full-min-height">
+    <%= yield %>
+  </div>
+
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr> <p>© MovieStore 2014</p>
+    </div>
+  </footer>
+
+  <%= javascript_include_tag "application" %>
+
+</body>
 </html>
