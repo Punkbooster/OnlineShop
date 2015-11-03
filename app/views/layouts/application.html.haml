@@ -1,0 +1,39 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title= content_for?(:title) ? yield(:title) : "foundation-rails"
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "vendor/modernizr"
+    = javascript_include_tag "application", 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    .row
+      %nav.top-bar.column{"data-topbar" => ""}
+        %ul.title-area
+          %li.name
+            %h1
+              %a{:href => "/"}
+                %i.fi-play-video
+                ComputerStore
+          %li.toggle-topbar
+            %a{:href => "#"}
+              %span Menu
+        %section.top-bar-section
+          %ul.right
+            %li= link_to "Register", "#"
+            %li= link_to "Login", "#"
+    - if notice.present? || alert.present?
+      .row
+        - is_alert = alert.present? ? "alert" : ""
+        %div{:class => "alert-box #{is_alert}", "data-alert" => ""}
+          = notice || alert
+          %a.close{:href => "#"} ×
+    #main-content.row.full-min-height
+      = yield
+    %footer.row
+      .large-12.columns
+        %hr/
+        %p © ComputerStore 2014
+    = javascript_include_tag "application"
